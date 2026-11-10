@@ -8,9 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Geode CLI
-        uses: geode-sdk/install-cli@main
-        
-      - name: Configure and Build
+      - name: Install Geode CLI Manually
+        run: |
+          curl -sL https://github.com/geode-sdk/cli/releases/latest/download/geode-cli-linux.tar.gz -o geode-cli.tar.gz
+          tar -xzf geode-cli.tar.gz
+          chmod +x geode
+          sudo mv geode /usr/local/bin/
+          
+      - name: Build Mod Package
         run: geode package
         
