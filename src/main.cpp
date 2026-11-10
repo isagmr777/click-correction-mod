@@ -4,11 +4,11 @@
 using namespace geode::prelude;
 
 class $modify(CorrectionPlayerObject, PlayerObject) {
-    void pushButton(PlayerButton button) {
+    void pushButton(PlayerButton button, bool push) {
         bool isEnabled = Mod::get()->getSettingValue<bool>("enabled");
         if (isEnabled) {
             log::info("Click detectado y analizado por el mod.");
         }
-        PlayerObject::pushButton(button);
+        PlayerObject::pushButton(button, push);
     }
 };
