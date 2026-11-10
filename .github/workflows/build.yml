@@ -4,5 +4,13 @@ on: [push, pull_request]
 
 jobs:
   build:
-    uses: geode-sdk/geode-actions/.github/workflows/build.yml@v2
-    
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Geode CLI
+        uses: geode-sdk/install-cli@main
+        
+      - name: Configure and Build
+        run: geode package
+        
